@@ -2,7 +2,7 @@
 layout: post
 title:  "Synthetic Features and Outliers"
 date:   2018-08-08 19:33:15 +0200
-categories: julia tensorflow
+categories: julia tensorflow features outliers
 ---
 
 In this second part, we create a synthetic feature and remove some outliers from the data set.
