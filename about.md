@@ -12,3 +12,7 @@ I am new to both Tensorflow and Julia - so please don't expect any in-depth prog
 
 
 This blog is  a pure just-for-fun hobby project. I am neither affiliated with Google, Julia or the creators of Tensorflow.jl.
+
+***
+
+This blog is hosted at [Github Pages](https://pages.github.com/) and uses [Jekyll](https://jekyllrb.com/) with the [Reverie theme](https://github.com/amitmerchant1990/reverie).
