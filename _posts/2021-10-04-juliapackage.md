@@ -58,6 +58,30 @@ To allow for errors in the nightly version, edit the `steps` section to include 
 The next step is of course to fill the template with Julia code (which goes into the `src` folder) and tests for your code (residing in the `test` folder).
 
 
+## `Project.toml` and `Manifest.toml`
+
+The Julia package manager automatically populates the two files `Project.toml` and `Manifest.toml` when adding external packages to the project. The published source code should only contain the former file. One way to achieve this is to include a line containing 
+```
+Manifest.toml
+``` 
+in the `.gitignore` file created by PkgTemplates.jl.
+
+The next step is to edit the compatibility section in `Project.toml`: In the part of the file following
+```
+[compat]
+```
+add a line with every external package used in the project. Define a range of permissible versions for each of the packages. The full range of possibilities is defined in the [Pkg Manual](https://pkgdocs.julialang.org/v1/compatibility/). A good starting point is to use the number of the major version for packages that have at least a version 1. At the time of writing, Tables.jl has reached version 1.6.0, so a possible compatibility entry would be
+```
+Tables = "1"
+```
+For packages still at major version 0, use the minor version instead. For example, with Flux.jl version 0.12.7 in use, an entry could be
+```
+Flux = "0.12"
+```
+
+The majority of Julia packages sticks to [semantic versioning](https://www.geeksforgeeks.org/introduction-semantic-versioning/). In the examples above, breaking changes could happen when Tables.jl releases a version 2, or the Flux.jl version comes up to 0.13. With the compatibility bounds shown here, all versions up to these possible breaking changes are acceptable, which is usually the desired behaviour.
+
+
 ## Documentation
 
 A package should have some documentation describing its features. It goes into the `docs` folder in the form of Markdown files. The `make.jl` file takes care of preparing everything, though we need to tell it the desired sidebar structure of our documentation. This goes into the `pages` keyword:
